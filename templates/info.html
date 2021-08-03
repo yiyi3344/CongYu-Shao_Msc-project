@@ -1,0 +1,338 @@
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="dashboard" />
+    <meta name="author" content="dashboard" />
+    <title>Key Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/examples/jumbotron/jumbotron.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <link href="/static/match20151127.css" rel="stylesheet" />
+    <style>
+        li {margin-bottom: 10px;}
+        .bformation {
+            width: 360px;
+            height: 560px;
+            position: relative;
+            background: url(/static/img/d01.jpg) no-repeat 0 0;
+            background-size: 100% 100%;
+            margin: 0 auto;
+        }
+    </style>
+  </head>
+  <body style="padding-top: 0;">
+    <input type="hidden" id="playerid" value="{{ playerid }}">
+    <input type="hidden" id="nid" value="{{ nid }}">
+    <div class="jumbotron">
+      <div class="container">
+          <div  class="row">
+              <div class="col-md-6">
+                  <form class="form-inline">
+                      <div class="form-group">
+                        <label for="exampleInputName2">Player :</label>
+                         <select class="form-control" id="playerList"></select>
+                      </div>
+                    </form>
+              </div>
+
+              <div class="col-md-6">
+                  <div style="width: 20%; float: right">
+                  <a href="/" class="btn btn-warning"> Return</a>
+                  </div>
+                  <div style="width: 80%"></div>
+
+              </div>
+          </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 id="player_name"></h2>
+            <div class="col-md-3">
+                <ul style="margin-top: 60px">
+                    <li>Nationality: <span id="player_nationality"></span></li>
+                    <li>Position: <span id="player_Position"></span></li>
+                    <li>Appearances: <span id="player_Appearances"></span></li>
+                    <li>Goals: <span id="player_goals"></span></li>
+                    <li>Assists: <span id="goal_assist"></span></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+             <div id="radar1" style="width:300px; height: 400px;"></div>
+            </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                  <div id="radar2" style="width:500px; height: 400px;"></div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <select class="form-control" id="matche"></select>
+        </div>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="row" style="text-align:center">
+                <h4>Hot Zone Map</h4>
+            </div>
+            <div class="row">
+                <div id="heatmap" class="bformation"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row" style="text-align:center">
+                <h4>Passes and Movements</h4>
+            </div>
+            <div class="row">
+                <div id="action" class="bformation"></div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-11">
+            <div class="pstatistics_legend">
+                <div class="pstatistics_legend_checker">
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="" checked />ALL</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="7" />Goals</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="5,6,7,8" />Shoot</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="1,2,3,4" />Pass</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="113" />Intercept</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="114" />Steal</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="111,112" />Clear</label>
+                    <label><input type="checkbox" onclick="checkboxClickFun(this)" class="at" value="105,106" />Foul</label>
+                </div>
+                <div class="pstatistics_legend_c clearfix">
+                    <div class="pstatistics_legend_item fl">
+                        <h4>Pass</h4>
+                        <p><span class="iconbs icon_legend_pass icon_legend_passsucc">Success</span></p>
+                        <p><span class="iconbs icon_legend_pass icon_legend_passfail">Fail</span></p>
+                        <p><span class="iconbs icon_legend_pass icon_legend_passasis">Assist</span></p>
+                        <p><span class="iconbs icon_legend_pass icon_legend_passchance">Make Chance</span></p>
+                    </div>
+                    <div class="pstatistics_legend_item fl">
+                        <h4>Shoot</h4>
+                        <p><span class="iconbs icon_legend_shoot icon_legend_shootsave">On target（Saved）</span></p>
+                        <p><span class="iconbs icon_legend_shoot icon_legend_shootout">Miss</span></p>
+                        <p><span class="iconbs icon_legend_shoot icon_legend_shootscore">Score</span></p>
+                        <p><span class="iconbs icon_legend_shoot icon_legend_shootblock">Shoot Blocked</span></p>
+                    </div>
+                    <div class="pstatistics_legend_item fl">
+                        <h4>Defense</h4>
+                        <p><span class="iconbs icon_legend_tackle icon_legend_tacklesucc">Tackle Success</span><span class="iconbs icon_legend_intercept">Intercept</span></p>
+                        <p><span class="iconbs icon_legend_tackle icon_legend_tacklefail">Tackle Fail</span><span class="iconbs icon_legend_block">Steal</span></p>
+                        <p><span class="iconbs icon_legend_rescue icon_legend_rescuesucc">Clear Success</span><span class="iconbs icon_legend_blockshoot">Block shoot</span></p>
+                        <p><span class="iconbs icon_legend_rescue icon_legend_rescuefail">Clear Fail</span><span class="iconbs icon_legend_blockpass">Block Cross</span></p>
+                    </div>
+                    <div class="pstatistics_legend_item fl">
+                        <h4>Break through</h4>
+                        <p><span class="iconbs icon_legend_dribble icon_legend_dribblesucc">Success</span></p>
+                        <p><span class="iconbs icon_legend_dribble icon_legend_dribblefail">Fail</span></p>
+                        <h4>Foul</h4>
+                        <p><span class="iconbs icon_legend_foulon">Foul</span></p>
+                        <p><span class="iconbs icon_legend_foulby">Fouled</span></p>
+                    </div>
+                    <div class="pstatistics_legend_item fl">
+                        <h4>Header</h4>
+                        <p><span class="iconbs icon_legend_scrimmage icon_legend_scrimmagesucc">Success</span></p>
+                        <p><span class="iconbs icon_legend_scrimmage icon_legend_scrimmagefail">Fail</span></p>
+                        <h4>Fault</h4>
+                        <p><span class="iconbs icon_legend_slip icon_legend_sliplose">Fault to be scored</span></p>
+                        <p><span class="iconbs icon_legend_slip icon_legend_slipshoot">Faoult to be shot</span></p>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>
+  window.jQuery ||document.write('<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/vendor/jquery.min.js"><\/script>');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<script src="/static/radar.js"></script>
+<script src="/static/heatmap.js"></script>
+<script src="/static/riaAction.js"></script>
+<script type="text/javascript">
+    {#创建热力图显示区域#}
+    var heatmapInstance = h337.create({
+        container: document.querySelector('#heatmap'),
+    });
+    {#创建行动图显示区域#}
+    var action_t = riaActionCreator.create($('#action'));
+    var nid = $('#nid').val();
+    var playerid = $('#playerid').val();
+    $.get("/keyplayer", {'nid': nid}, function(result){
+        var info = NaN;
+        $.each(result.keyLists, function (index, item){
+            if (playerid == item['player_id']) {
+                info = item
+                $('#playerList').append('<option selected value="'+item['player_id']+'">'+item['player_name']+'</option>')
+            } else {
+                $('#playerList').append('<option value="'+item['player_id']+'">'+item['player_name']+'</option>')
+            }
+
+        })
+        init(info)
+    });
+
+    function init(player_info){
+        $('#player_name').html(player_info['player_name'])
+        $('#player_nationality').html(player_info['nationality'])
+        $('#player_Position').html(player_info['position_en'])
+        $('#player_Appearances').html(player_info['times'])
+        $('#player_goals').html(player_info['goals'])
+        $('#goal_assist').html(player_info['goal_assist'])
+
+
+        $.get('/comprehensive', {'nid':nid, 'tid':2, 'playerid':playerid}, function (result){
+            var myChart3 = echarts.init(document.getElementById('radar1'));
+            var options = {
+                legend: {
+                    data: result.legend,
+                },
+                radar: {
+                    // shape: 'circle',
+                    top: '50%',
+                    indicator: [
+                        { name: 'Break Through', max: 3},
+                        { name: 'Fouls', max: 3},
+                        { name: 'Fouled', max: 3},
+                        { name: 'Clearances', max: 3},
+                        { name: 'Tackles', max: 3},
+                    ]
+                },
+                tooltip: {
+                    confine: true,
+                    trigger: 'item',
+                    formatter: (params)=>{
+                        var relVal = params.name;
+                        var typeList = options.radar.indicator
+                        for (var i = 0; i < typeList.length; i++) {
+                            if (i === 0 || i === 4){
+                                relVal += '<br/>' + typeList[i]['name'] + ' : ' + params.data.value[i] + ' (' + params.data.c[i] + '%)';
+                            } else {
+                                relVal += '<br/>' + typeList[i]['name'] + ' : ' + params.data.value[i];
+                            }
+                        }
+                        return relVal;
+                    }
+                },
+                series: [{
+                    name: 'Comprehensive Statistics',
+                    type: 'radar',
+                    data: result.data
+                }]
+            };
+            myChart3.setOption(options);
+        });
+        $.get('/infoLine', {'nid':nid, 'playerid':playerid}, function (result){
+            var myChart4 = echarts.init(document.getElementById('radar2'));
+            var option4 = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['Shot on target', 'Assists', 'Contests', 'Fouled', 'Tackles', 'Clearances', 'Successful Passes']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: result.xAxis
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: result.data
+            };
+            myChart4.setOption(option4);
+        });
+
+
+        $('#matche').find("option:selected").text("");
+        $('#matche').empty()
+        $.get("/matche", {'nid': nid}, function(result){
+            $.each(result, function (index, item){
+                $('#matche').append('<option value="'+item['id']+'">'+item['date'] + '  ' + item['name']+'</option>')
+            })
+
+            hotmap()
+            initAciton()
+            action()
+        })
+    }
+    {#hotmap#}
+    function hotmap(){
+        $.get("/hotmap", {'matche_id':$('#matche').val(), 'player_id':$('#playerList').val()}, function(result){
+            heatmapInstance.setData({max: 90, data: result});
+        })
+    }
+
+    function initAciton(){
+        $(".at").removeAttr("checked");
+        $(".at").each(function (){
+            if ($(this).val() == '') {
+                $(this).prop('checked',true);
+            }
+        })
+    }
+
+    {#action#}
+    function action(){
+        var at = $("input[type='checkbox']:checked").val();
+        $.get("/action", {'matche_id':$('#matche').val(), 'player_id':$('#playerList').val(), 'at': at}, function(result){
+            paintAction(action_t, result)
+        })
+
+    }
+
+    {#选择球员时重新填充数据#}
+    $('#playerList').change(function (){
+        window.location.href = '/info?playerid='+$('#playerList').val()+'&nid='+nid
+    })
+
+    {#行动图选中改变#}
+    function checkboxClickFun(that) {
+        if(that.checked) {
+            $(that).parents('.pstatistics_legend_checker').find('input[type=checkbox]').not(that).attr("checked", false);
+        }
+        action()
+    }
+
+    {#选择场次时重新填充数据#}
+    $('#matche').change(function (){
+        hotmap()
+        initAciton()
+        action()
+    })
+</script></body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "teams": [
+    {"id": "932", "name": "Denmark"},
+    {"id": "922", "name": "England"},
+    {"id": "926", "name": "Italy"},
+    {"id": "944", "name": "Spain"}
+  ],
+  "matches": [
+    {"id": "236752", "teamId": "932", "date": "6/13", "name": "Denmark VS Finland"},
+    {"id": "236765", "teamId": "932", "date": "6/18", "name": "Denmark VS Belgium"},
+    {"id": "236778", "teamId": "932", "date": "6/22", "name": "Russia VS Denmark"},
+    {"id": "238847", "teamId": "932", "date": "6/27", "name": "Welsh VS Denmark"},
+    {"id": "239129", "teamId": "932", "date": "7/04", "name": "Czech Republic VS Denmark"},
+    {"id": "236755", "teamId": "922", "date": "6/13", "name": "England VS Croatia"},
+    {"id": "236769", "teamId": "922", "date": "6/19", "name": "England VS Scotland"},
+    {"id": "236781", "teamId": "922", "date": "6/23", "name": "Czech Republic VS England"},
+    {"id": "238997", "teamId": "922", "date": "6/30", "name": "England VS Germany"},
+    {"id": "239364", "teamId": "922", "date": "7/04", "name": "Ukraine VS England"},
+    {"id": "236750", "teamId": "926", "date": "6/12", "name": "Turkey VS Italy"},
+    {"id": "236763", "teamId": "926", "date": "6/17", "name": "Italy VS Switzerland"},
+    {"id": "236774", "teamId": "926", "date": "6/21", "name": "Italy VS Wales"},
+    {"id": "238846", "teamId": "926", "date": "6/27", "name": "Italy VS Austria"},
+    {"id": "239130", "teamId": "926", "date": "7/03", "name": "Belgium VS Italy"},
+    {"id": "236759", "teamId": "944", "date": "6/15", "name": "Spain VS Sweden"},
+    {"id": "236773", "teamId": "944", "date": "6/20", "name": "Spain VS Poland"},
+    {"id": "236784", "teamId": "944", "date": "6/24", "name": "Slovakia VS Spain"},
+    {"id": "238993", "teamId": "944", "date": "6/29", "name": "Croatia VS Spain"},
+    {"id": "239350", "teamId": "944", "date": "7/03", "name": "Switzerland VS Spain"}
+  ]
+}

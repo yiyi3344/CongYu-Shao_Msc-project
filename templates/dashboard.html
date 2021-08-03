@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparison Of Players</title>
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .bs-docs-header {
+            font-size: 24px;
+            text-align: left;
+        }
+        .bs-docs-header, .bs-docs-masthead {
+            position: relative;
+            padding: 30px 0;
+            color: #cdbfe3;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(0,0,0,.1);
+            background-color: #6f5499;
+            background-image: -webkit-gradient(linear,left top,left bottom,from(#563d7c),to(#6f5499));
+            background-image: -webkit-linear-gradient(top,#563d7c 0,#6f5499 100%);
+            background-image: -o-linear-gradient(top,#563d7c 0,#6f5499 100%);
+            background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#563d7c", endColorstr="#6F5499", GradientType=0);
+            background-repeat: repeat-x;
+        }
+    </style>
+</head>
+<body class="inside-header inside-aside">
+    <div class="bs-docs-header">
+      <div class="container">
+        <h1>Comparison Of Players</h1>
+        <p>Only records the statistics of the players whose total appearing time is over 300 minutes</p>
+
+      </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 40px">
+            <div class="input-group">
+                <span class="input-group-addon">Nationality : </span>
+                <select class="form-control input-inline" style="width:270px;" id="nationality"></select>
+            </div>
+        </div>
+        <div class="tab-content tab-addtabs">
+            <div id="content">
+                <div class="row">
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default panel-intro panel-statistics">
+                                <div class="panel-body">
+                                    <h4>Offensive</h4>
+                                    <div>
+                                        <form id="form1" action="" role="form" novalidate="novalidate" class="form-inline nice-validator n-default n-bootstrap">
+                                            <div class="input-group">
+                                                <select class="form-control input-inline" style="width:270px;" id="Offensive">
+                                                    <option value="1">Total</option>
+                                                    <option value="2">Per Game</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="echarts1" style="height: 600px; width: 100%; margin-top: 15px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1626395870512">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="panel panel-default panel-intro panel-statistics">
+                                <div class="panel-body">
+                                    <h4>Passes</h4>
+                                    <div>
+                                        <form id="form2" action="" role="form" novalidate="novalidate" class="form-inline nice-validator n-default n-bootstrap">
+                                            <div class="input-group">
+                                                <select class="form-control input-inline" style="width:270px;" id="player"></select>
+                                            </div>
+                                            <div class="input-group">
+                                                <select class="form-control input-inline" style="width:170px;" id="passes">
+                                                    <option value="1">Total</option>
+                                                    <option value="2">Per Game</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="echarts2" style="height: 600px; width: 100%; margin-top: 15px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1626395870512">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="panel panel-default panel-intro panel-statistics">
+                                <div class="panel-body">
+                                    <h4>Comprehensive Statistics</h4>
+                                    <div>
+                                        <form id="form2" action="" role="form" novalidate="novalidate" class="form-inline nice-validator n-default n-bootstrap">
+                                            <div class="input-group">
+                                                <select class="form-control input-inline" style="width:170px;" id="comprehensive">
+                                                    <option value="1">Total</option>
+                                                    <option value="2">Per Game</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="echarts3" style="height: 600px; width: 100%; margin-top: 15px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1626395870512">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default panel-intro panel-statistics">
+                                <div class="panel-body">
+                                    <h4>Key Player</h4>
+                                    <h5>According to 8 average statistics， the Key Player of the team is <b id="key"></b></h5>
+                                    <div style="height: 800px; width: 100%; margin-top: 15px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                        <div id="echarts4" style="height: 100px"></div>
+                                        <div id="echarts5" style="height: 100px"></div>
+                                        <div id="echarts6" style="height: 100px"></div>
+                                        <div id="echarts7" style="height: 100px"></div>
+                                        <div id="echarts8" style="height: 100px"></div>
+                                        <div id="echarts9" style="height: 100px"></div>
+                                        <div id="echarts10" style="height: 100px"></div>
+                                        <div id="echarts11" style="height: 100px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>
+  window.jQuery ||document.write('<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/vendor/jquery.min.js"><\/script>');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+
+<script>
+    $(function (){
+        $.get("/nationality", function(result){
+            $.each(result, function (index, item){
+                $('#nationality').append('<option value="'+item['id']+'">'+item['name']+'</option>')
+            });
+            init();
+        });
+        function init(){
+            $('#Offensive').val(1)
+            $('#passes').val(1)
+            {#  创建Offensive  #}
+            Offensive();
+            {#  初始化球员信息  #}
+            player();
+            comprehensive()
+            keyplayer()
+        }
+        $('#nationality').change(function (){
+            init();
+        })
+        function Offensive(){
+            var nid = $('#nationality').val();
+            var tid = $('#Offensive').val();
+            var myChart1 = echarts.init(document.getElementById('echarts1'));
+            $.get("/offensive", {'nid':nid, 'tid':tid}, function(result){
+                var xAxisData = result.xAxisData;
+                var data1 = result.goals;
+                var data2 = result.shots_on_target;
+                var data3 = result.total_shots;
+                option = {
+                    legend: {
+                        data: ['Goals', 'Shots On Target', 'Total Shots'],
+                        left: '10%',
+                        orient: "horizontal",
+                    },
+
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    tooltip: {},
+                    xAxis: {
+                        axisLabel:{
+                          interval:0,
+                          rotate:45,//倾斜度 -90 至 90 默认为0
+                          margin:2,
+                          textStyle:{
+                            fontWeight:"bolder",
+                            {#color:"#000000"#}
+                          }
+                        },
+                        data: xAxisData,
+                        name: 'Player',
+                        axisLine: {onZero: true},
+                        splitLine: {show: false},
+                        splitArea: {show: false}
+                    },
+                    yAxis: {},
+                    grid: {
+                        bottom: 100
+                    },
+                    series: [
+                        {
+                            name: 'Goals',
+                            type: 'bar',
+                            stack: 'one',
+                            {#emphasis: emphasisStyle,#}
+                            data: data1
+                        },
+                        {
+                            name: 'Shots On Target',
+                            type: 'bar',
+                            stack: 'one',
+                            {#emphasis: emphasisStyle,#}
+                            data: data2
+                        },
+                        {
+                            name: 'Total Shots',
+                            type: 'bar',
+                            stack: 'one',
+                            {#emphasis: emphasisStyle,#}
+                            data: data3
+                        }
+                    ]
+                };
+                myChart1.setOption(option);
+            });
+
+        }
+        $('#Offensive').change(function (){
+            Offensive();
+        })
+
+        function player(){
+            var nid = $('#nationality').val();
+            $('#player').empty()
+            $.get("/player", {'nid': nid}, function(result){
+                $.each(result, function (index, item){
+                    $('#player').append('<option value="'+item['player_id']+'">'+item['player_name']+'</option>');
+                })
+                Passes();
+            });
+        }
+
+        function Passes(){
+            var pid = $('#player').val();
+            var tid = $('#passes').val();
+            $.get("/passes", {'pid':pid, 'tid':tid}, function(result){
+                var myChart2 = echarts.init(document.getElementById('echarts2'));
+                 var option = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: function (params) {
+                            return params['data']['name'] + ": " + params['data']['value'] + "(" + params['data']['c'] + ")";
+                        }
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    legend: {
+                        data: ['Total Passes','Pass Success','Key Passes','Assists']
+                    },
+                    series: [
+                        {
+                            name:'Passes',
+                            type:'funnel',
+                            left: '10%',
+                            top: 60,
+                            //x2: 80,
+                            bottom: 60,
+                            width: '80%',
+                            // height: {totalHeight} - y - y2,
+                            min: 0,
+                            max: 100,
+                            minSize: '0%',
+                            maxSize: '100%',
+                            sort: 'descending',
+                            gap: 2,
+                            label: {
+                                show: true,
+                                position: 'inside'
+                            },
+                            labelLine: {
+                                length: 10,
+                                lineStyle: {
+                                    width: 1,
+                                    type: 'solid'
+                                }
+                            },
+                            itemStyle: {
+                                borderColor: '#fff',
+                                borderWidth: 1
+                            },
+                            emphasis: {
+                                label: {
+                                    fontSize: 20
+                                }
+                            },
+                            data: result
+                        }
+                    ]
+                };
+                myChart2.setOption(option);
+            });
+        }
+        $('#player').change(function (){
+            $("#passes").val(1);
+            Passes();
+        });
+        $('#passes').change(function (){
+            Passes();
+        });
+        $('#comprehensive').change(function (){
+            comprehensive();
+        });
+        function comprehensive(){
+            var nid = $('#nationality').val();
+            var tid = $('#comprehensive').val();
+            if (tid == 1) {
+                var indicator = [
+                            { name: 'Break Through', max: 20},
+                            { name: 'Fouls', max: 20},
+                            { name: 'Fouled', max: 20},
+                            { name: 'Clearances', max: 20},
+                            { name: 'Tackles', max: 20},
+                        ]
+            } else {
+                var indicator = [
+                            { name: 'Break Through', max: 5},
+                            { name: 'Fouls', max: 5},
+                            { name: 'Fouled', max: 5},
+                            { name: 'Clearances', max: 5},
+                            { name: 'Tackles', max: 5},
+                        ]
+            }
+            $.get('/comprehensive', {'nid':nid, 'tid':tid}, function (result){
+                var myChart3 = echarts.init(document.getElementById('echarts3'));
+                var options = {
+                    legend: {
+                        data: result.legend,
+                    },
+                    radar: {
+                        // shape: 'circle',
+                        top: '50%',
+                        indicator: indicator
+                    },
+                    tooltip: {
+                        confine: true,
+                        trigger: 'item',
+                        formatter: (params)=>{
+                            var relVal = params.name;
+                            var typeList = options.radar.indicator
+                            for (var i = 0; i < typeList.length; i++) {
+                                if (i === 0 || i === 4){
+                                    relVal += '<br/>' + typeList[i]['name'] + ' : ' + params.data.value[i] + ' (' + params.data.c[i] + '%)';
+                                } else {
+                                    relVal += '<br/>' + typeList[i]['name'] + ' : ' + params.data.value[i];
+                                }
+                            }
+                            return relVal;
+                        }
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    series: [{
+                        name: 'Comprehensive Statistics',
+                        type: 'radar',
+                        data: result.data
+                    }]
+                };
+                myChart3.setOption(options);
+            })
+        }
+
+        function hots(myChart, player, item, data, min, max, show){
+            data = data.map(function (item) {
+                return [item[1], item[0], item[2] || '-'];
+            });
+            var option = {
+                tooltip: {
+                    position: 'top'
+                },
+                grid: {
+                    height: '50%',
+                    top: '10%',
+                    left: '150',
+                },
+                xAxis: {
+                    axisLabel:{
+                      interval:0,
+                      rotate:10,//倾斜度 -90 至 90 默认为0
+                      margin:10,
+                      textStyle:{
+                        fontWeight:"bolder"
+                      },
+                      show: show
+                    },
+                    type: 'category',
+                    data: player,
+                    splitArea: {
+                        show: true
+                    }
+                },
+                yAxis: {
+                    axisLabel:{
+                      interval:0,
+                      margin:2,
+                      textStyle:{
+                        align:'right'
+                      }
+                    },
+                    type: 'category',
+                    data: item,
+                    splitArea: {
+                        show: true
+                    }
+                },
+                visualMap: {
+                    min: min,
+                    max: max,
+                    calculable: false,
+                    orient: 'horizontal',
+                    left: 'center',
+                    bottom: '15%',
+                    show: false
+                },
+                series: [{
+                    name: item[0],
+                    type: 'heatmap',
+                    data: data,
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 0.01,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            };
+            myChart.setOption(option);
+        }
+        function keyplayer(){
+            var nid = $('#nationality').val();
+            $.get('/keyplayer', {'nid':nid}, function (result){
+                $('#key').empty()
+                $('#key').append(result.html)
+                var player = result.player;
+                var myChart4 = echarts.init(document.getElementById('echarts4'));
+                hots(myChart4, player, ['Average Goals'], result.data['averageGoals'], result.data['averageGoalsMin'], result.data['averageGoalsMax'], false)
+                var myChart5 = echarts.init(document.getElementById('echarts5'));
+                hots(myChart5, player, ['Average Assists'], result.data['averageAssists'], result.data['averageAssistsMin'], result.data['averageAssistsMax'], false)
+                var myChart6 = echarts.init(document.getElementById('echarts6'));
+                hots(myChart6, player, ['Average Key Passes'], result.data['averageKeyPasses'], result.data['averageKeyPassesMin'], result.data['averageKeyPassesMax'], false)
+                var myChart7 = echarts.init(document.getElementById('echarts7'));
+                hots(myChart7, player, ['Average Break Through'], result.data['averageBreakThrough'], result.data['averageBreakThroughMin'], result.data['averageBreakThroughMax'], false)
+                var myChart8 = echarts.init(document.getElementById('echarts8'));
+                hots(myChart8, player, ['Average Clearance'], result.data['averageClearance'], result.data['averageClearanceMin'], result.data['averageClearanceMax'], false)
+                var myChart9 = echarts.init(document.getElementById('echarts9'));
+                hots(myChart9, player, ['Average Tackle'], result.data['averageTackle'], result.data['averageTackleMin'], result.data['averageTackleMax'], false)
+                var myChart10 = echarts.init(document.getElementById('echarts10'));
+                hots(myChart10, player, ['Average Passes'], result.data['averagePasses'], result.data['averagePassesMin'], result.data['averagePassesMax'], false)
+                var myChart11 = echarts.init(document.getElementById('echarts11'));
+                hots(myChart11, player, ['Average Pass Success'], result.data['averagePassSuccess'], result.data['averagePassSuccessMin'], result.data['averagePassSuccessMax'], true)
+            })
+        }
+    })
+</script>
+</body>
+</html>
