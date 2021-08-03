@@ -1,11 +1,11 @@
-1.引用包的作用
-    flask用于制作dashboard显示网页
-    requests用于爬取数据
+1.libs
+    flask for dashboard
+    requests for spider
 
-2.config.json配置文件的作用
-    定义做比对的球员信息及比赛场次信息
+2.config.json 
+    definite the information of player and matches selected
 
-3.前端使用
-    jQuery 用于动态js
-    bootstrap 快速布局前端页面
-    echarts.js 用来制作雷达图
+3.front page
+    jQuery for dynamic js
+    bootstrap for layout
+    echarts.js 
